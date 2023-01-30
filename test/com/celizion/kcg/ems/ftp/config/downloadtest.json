@@ -1,0 +1,24 @@
+{
+	"sites": [
+		"testSite"
+	],
+	
+	"testSite": {
+		"hostname" : "localhost",
+		"port" : 22,
+		"sftp" : true,
+		"id" : "ftpuser",
+		"password" : "encrypt:IvafWDxqmXmz4zVNiJXaoB37HEVzH+y6ml4h3u93uy1XMSU0JglQdLCv7Mtbf24BzNuD3Q==",
+		"works" : [
+			{
+				"jobType" : "download",
+				"schedule" : "quartz:30 * * * * ?",
+				"name": "first test download",
+				"from" : "filePattern:/FTP Folder/temp/bono/,remote_sample.+.txt",
+				"to" : "/remote/test/{SOURCEFILENAME}",
+				"preRule" : "log:start download to local folder.",
+				"postRule" : "delete:{FILES:C:/temp/bono/backup,.+.move};move:{DOWNLOADFILES},/temp/bono/backup/{FILENAME}.{SIMPLEDATEFORMAT:yyyyMMddHHmmss}.move"
+			}
+		]
+	} 
+}

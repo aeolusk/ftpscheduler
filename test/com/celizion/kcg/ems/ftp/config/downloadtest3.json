@@ -1,0 +1,22 @@
+{
+	"sites": [
+		"testSite"
+	],
+	
+	"testSite": {
+		"hostname" : "192.168.123.71",
+		"id" : "goodsoft",
+		"password" : "goodsoft",
+		"works" : [
+			{
+				"jobType" : "download",
+				"schedule" : "quartz:0 0/5 * * * ?",
+				"name": "first test download",
+				"from" : "filePattern:/data/,.+.txt",
+				"to" : "/remote/test/{SOURCEFILENAME}.{SIMPLEDATEFORMAT:yyyyMMddHHmmss}.txt",
+				"preRule" : "log:start download to local folder.",
+				"postRule" : "delete:{FILES:C:/temp/bono/backup,.+.move};move:{DOWNLOADFILES},/temp/bono/backup/{FILENAME}.{SIMPLEDATEFORMAT:yyyyMMddHHmmss}.move"
+			}
+		]
+	} 
+}

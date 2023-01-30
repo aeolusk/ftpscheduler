@@ -1,0 +1,19 @@
+{
+	"sites": [
+		"testSite"
+	],
+	"testSite": {
+		"hostname": "localhost",
+		"works": [
+			{
+				"jobType": "upload",
+				"schedule": "quartz:0,30 * * ? * MON-FRI",
+				"name": "second test upload",
+				"from": "file:/temp/bono/test/2021.01.22.txt",
+				"to": "/remote/test/{SOURCEFILENAME}",
+				"preRule": "preRule",
+				"postRule": "postRule"
+			}
+		]
+	}
+}

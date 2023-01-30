@@ -1,0 +1,20 @@
+{
+	"sites": [
+		"testSite"
+	],
+	
+	"testSite": {
+		"hostname" : "localhost",
+		"works" : [
+			{
+				"jobType" : "upload",
+				"schedule" : "quartz:30 * * * * ?",
+				"name": "first test upload",
+				"from" : "filePattern:/temp/bono/test/,\\d+\\.\\d+\\.\\d+.txt",
+				"to" : "/FTP Folder/temp/{SIMPLEDATEFORMAT:yyyyMMddYYHHMM}/{SOURCEFILENAME}",
+				"preRule" : "preRule",
+				"postRule" : "move:/temp/bono/backup"
+			}
+		]
+	} 
+}

@@ -1,0 +1,22 @@
+{
+	"sites": [
+		"testSite"
+	],
+	
+	"testSite": {
+		"hostname" : "localhost",
+		"id" : "ftpuser",
+		"password" : "good1018",
+		"works" : [
+			{
+				"jobType" : "download",
+				"schedule" : "quartz:0 * * * * ?",
+				"name": "second test download",
+				"from" : "filePattern:/temp/bono/,remote_sample.+.txt",
+				"to" : "/remote/test/{SOURCEFILENAME}.copy",
+				"preRule" : "log:start download to ftp folder.",
+				"postRule" : "log:{DOWNLOADFILES}"
+			}
+		]
+	} 
+}
